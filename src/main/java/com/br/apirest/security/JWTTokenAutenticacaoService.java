@@ -51,10 +51,11 @@ public class JWTTokenAutenticacaoService {
 		/* Adiciona no cabeçalho http */
 		response.addHeader(HEADER_STRING, token); /* Authorization Bearer ff34trgwgrgTBH */
 
-		ApplicationContextLoad.getApplicationContext().getBean(UsuarioRepository.class)
-		.atualizaTokenUser(JWT, username);
-		
+		ApplicationContextLoad.getApplicationContext().getBean(UsuarioRepository.class).atualizaTokenUser(JWT,
+				username);
+
 		// Liberando resposta para portas diferentes que usam a API ou caso clientes Web
+
 		liberacaoCors(response);
 
 		/* Escreve token como resposta no corpo http */
@@ -85,7 +86,7 @@ public class JWTTokenAutenticacaoService {
 
 					if (usuario != null) {
 
-						if (tokenLimpo.equalsIgnoreCase(usuario.getToken())) {
+						if (tokenLimpo.equalsIgnoreCase(usuario.getTokenUser())) {
 
 							return new UsernamePasswordAuthenticationToken(usuario.getLogin(), usuario.getSenha(),
 									usuario.getAuthorities());

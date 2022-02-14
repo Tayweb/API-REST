@@ -27,7 +27,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 
 				// Ativando a restrição a Url
-				.disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/index").permitAll()
+				.disable().authorizeRequests().antMatchers("/").permitAll().antMatchers("/index", "/recuperar/**").permitAll()
 
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 				

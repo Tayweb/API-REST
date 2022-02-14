@@ -61,6 +61,12 @@ public class ControllerExcecoes extends ResponseEntityExceptionHandler {
 
 		} else if (ex instanceof ConstraintViolationException) {
 			msg = ((ConstraintViolationException) ex).getCause().getCause().getMessage();
+
+		} else if (ex instanceof PSQLException) {
+			msg = ((PSQLException) ex).getCause().getCause().getMessage();
+
+		} else if (ex instanceof SQLException) {
+			msg = ((SQLException) ex).getCause().getCause().getMessage();
 		} else {
 			msg = ex.getMessage(); // Outras mensagens de erros
 		}

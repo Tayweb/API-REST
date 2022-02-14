@@ -32,7 +32,17 @@ public class ApiRestApplication implements WebMvcConfigurer{
 	
 	@Override
 	public void addCorsMappings(CorsRegistry registry) { //Mapeia os controllers e os End Point de forma global
-		registry.addMapping("/usuarios/**").allowedMethods("POST", "GET").allowedOrigins("localhost:8080");
+		registry.addMapping("/usuarios/**")
+		.allowedMethods("*")
+		.allowedOrigins("*");
+		
+		registry.addMapping("/profissao/**")
+		.allowedMethods("*")
+		.allowedOrigins("*");
+		
+		registry.addMapping("/recuperar/**")
+		.allowedMethods("*")
+		.allowedOrigins("*");
 		
 		//Liberando apenas post para o usuario/site
 	}
